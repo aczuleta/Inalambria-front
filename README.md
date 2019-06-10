@@ -1,4 +1,4 @@
-# Inalambria-Frint
+# Inalambria-Front
 Repositorio para prueba técnica de inalambria. Este repositorio contiene el Fronted para el proyecto de la librería.
 
 Este consiste en una WebApp sencilla realizada en Angular 8.
