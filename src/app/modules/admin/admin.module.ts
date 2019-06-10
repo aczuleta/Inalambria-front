@@ -17,6 +17,6 @@ import { CanAdmin } from '../../guards/admin.guard';
     ],
     providers: [CanAdmin]
   })
-export default class AdminModule {
+export class AdminModule {
 }
   

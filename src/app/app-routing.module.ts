@@ -10,15 +10,15 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: './modules/admin/admin.module'
+    loadChildren: './modules/admin/admin.module#AdminModule'
   },
   {
     path: 'reservas',
-    loadChildren: './modules/reservas/reservas.module'
+    loadChildren: './modules/reservas/reservas.module#ReservasModule'
   },
   {
     path: 'auth',
-    loadChildren: './modules/auth/auth.module'
+    loadChildren: './modules/auth/auth.module#AuthModule'
   }
 ];
 
