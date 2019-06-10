@@ -1,24 +1,24 @@
-<form  class="col-xs-12 row margin-30">
-    <mat-form-field class="col-xs-12" >
-      <input ngModel  required name="username" #username="ngModel"  matInput placeholder="Nombre de usuario">
+<form class="col-xs-12 row margin-30">
+    <mat-form-field class="col-xs-12">
+        <input ngModel required name="username" #username="ngModel" matInput placeholder="Nombre de usuario">
     </mat-form-field>
-    <mat-form-field class="col-xs-12" >
-        <input ngModel  required name="fullname" #fullname="ngModel"  matInput placeholder="Nombre Completo">
+    <mat-form-field class="col-xs-12">
+        <input ngModel required name="fullname" #fullname="ngModel" matInput placeholder="Nombre Completo">
     </mat-form-field>
-    <mat-form-field class="col-xs-12" >
+    <mat-form-field class="col-xs-12">
         <mat-label>Rol</mat-label>
         <mat-select ngModel required name="rol" #rol="ngModel">
-          <mat-option value="ADMIN">
-            Administrador
-          </mat-option>
-          <mat-option value="USER">
-            Usuario
-          </mat-option>
+            <mat-option value="ADMIN">
+                Administrador
+            </mat-option>
+            <mat-option value="USER">
+                Usuario
+            </mat-option>
         </mat-select>
     </mat-form-field>
     <div class="col-xs-12 center-xs">
         <button mat-raised-button color="primary" (click)="registrar(username.value, fullname.value, rol.value)">
-          Registrar
+            Registrar
         </button>
     </div>
 </form>

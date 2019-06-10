@@ -4,6 +4,11 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: "auth",
+    pathMatch: "full"
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.default)
   },
@@ -12,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/reservas/reservas.module').then(m => m.default)
   },
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.default)
   }
 ];

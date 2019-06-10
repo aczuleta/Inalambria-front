@@ -16,7 +16,6 @@ export class UsuariosService {
     constructor(private http: HttpClient, private apollo: Apollo) { }
 
     public getUsuario(username):Observable<any> {
-        console.log("estamos llegando hasta acá", username);
         return this.apollo.watchQuery<any>({
             query: getUserUsername,
             variables: {

@@ -16,20 +16,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   imports: [
         MatFormFieldModule, MatInputModule, MatIconModule, 
         MatProgressSpinnerModule, MatButtonModule, MatCardModule,
         MatTableModule, FormsModule, MatSelectModule,
         HttpClientModule, ApolloModule, HttpLinkModule, MatCheckboxModule,
-        MatExpansionModule, ReactiveFormsModule, MatListModule, MatTabsModule
+        MatExpansionModule, ReactiveFormsModule, MatListModule, MatTabsModule,
+        MatToolbarModule
   ],
   exports: [
         MatFormFieldModule, MatInputModule, MatIconModule, 
         MatProgressSpinnerModule, MatButtonModule,  MatCardModule,
         FormsModule, MatTableModule, MatSelectModule,
         HttpClientModule, ApolloModule, HttpLinkModule, MatCheckboxModule,
-        MatExpansionModule, ReactiveFormsModule, MatListModule, MatTabsModule
+        MatExpansionModule, ReactiveFormsModule, MatListModule, MatTabsModule,
+        MatToolbarModule
   ]
 })
 export class SharedModule { }

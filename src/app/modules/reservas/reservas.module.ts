@@ -6,6 +6,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {routes} from './reservas.routing';
 import { ReservasComponent } from './reservas/reservas.component';
 import { BookCardComponent } from './book-card/book-card.component';
+import { CanReservar } from '../../guards/reserva.guard';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { BookCardComponent } from './book-card/book-card.component';
     imports: [
       CommonModule, RouterModule.forChild(routes), SharedModule
     ],
-    providers: []
+    providers: [CanReservar]
   })
 export default class AdminModule {
 }

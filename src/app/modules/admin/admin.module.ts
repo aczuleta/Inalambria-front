@@ -6,6 +6,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {routes} from './admin.routing';
 
 import { EditorLibrosComponent } from './editor-libros/editor-libros.component';
+import { CanAdmin } from '../../guards/admin.guard';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,7 @@ import { EditorLibrosComponent } from './editor-libros/editor-libros.component';
     imports: [
       CommonModule, RouterModule.forChild(routes), SharedModule
     ],
-    providers: []
+    providers: [CanAdmin]
   })
 export default class AdminModule {
 }

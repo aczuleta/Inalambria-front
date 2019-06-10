@@ -9,13 +9,14 @@ import {getBooks} from './queries/books';
 import {createBook, deleteBook, updateBook} from './mutations/books'
 import gql from 'graphql-tag';
 import { Book } from '../models/models.barrel';
+import { CentralService } from './central.service';
 
 
 @Injectable({
     providedIn: 'root',
 })
 export class BooksService {
-    constructor(private http: HttpClient, private apollo: Apollo) { }
+    constructor(private http: HttpClient, private apollo: Apollo, private central:CentralService ) { }
     public getBooks():Observable<Book[]> {
         return this.apollo.watchQuery<any>({
             query: getBooks
@@ -23,6 +24,7 @@ export class BooksService {
           .valueChanges
           .pipe(
             map( (response:any) => {
+                this.central.emitLoading(false);
                 return response.data.books
             })
           );
@@ -45,6 +47,7 @@ export class BooksService {
             }]
         }).subscribe(x => {
             alert("¡Libro Creado!");
+            this.central.emitLoading(false);
             console.log(x)
         }, error => {
             console.log("An error ocurred: ", error);
@@ -61,6 +64,7 @@ export class BooksService {
                 query: getBooks
             }]
         }).subscribe(x => {
+            this.central.emitLoading(false);
             alert("¡Libro Eliminado!");
             console.log(x)
         }, error => {
@@ -85,6 +89,7 @@ export class BooksService {
                 query: getBooks
             }]
         }).subscribe(x => {
+            this.central.emitLoading(false);
             alert("¡Libro Actualizado!");
             console.log(x)
         }, error => {

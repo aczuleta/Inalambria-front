@@ -3,23 +3,35 @@ import { BooksService } from '../../../services/books.service';
 import { Observable } from 'rxjs';
 import { Book } from '../../../models/models.barrel';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { fade } from '../../../animations/animations.barrel';
+import { CentralService } from '../../../services/central.service';
 
 @Component({
   selector: 'editor-libros',
   templateUrl: './editor-libros.component.html',
-  styleUrls: ['./editor-libros.component.scss']
+  styleUrls: ['./editor-libros.component.scss'],
+  animations: [fade]
 })
 export class EditorLibrosComponent implements OnInit {
 
+  public loading:boolean;
+  public usuario:any;
   public base64textString:String="";
   public createForm:FormGroup;
   public books$:Observable<any[]>;
-  constructor(private bookService:BooksService, private fb: FormBuilder) {
+  constructor(private bookService:BooksService, private fb: FormBuilder,
+  private router:Router, private central:CentralService ) {
 
   }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem("user"));
     this.books$ = this.bookService.getBooks();
+    this.loading = false;
+    this.central.subject.subscribe( x => {
+      this.loading = x;
+    })
   }
 
   crearLibro(titulo, isbn, genero, autor, paginas, cantidad){
@@ -29,11 +41,13 @@ export class EditorLibrosComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
     this.bookService.createBook(titulo.value, isbn.value, cantidad.value, 
       genero.value, autor.value, paginas.value, this.base64textString)
   }
 
   eliminarLibro(id:number){
+    this.loading = true;
     if(confirm("¿Está seguro que desea eliminar este libro? (Sólo pueden eliminarse libros sin reservas)")) 
       this.bookService.deleteBook(id);
   }
@@ -43,8 +57,10 @@ export class EditorLibrosComponent implements OnInit {
   }
 
   actualizarLibro(book){
+    this.loading = true;
+    if(this.base64textString) book.cover = this.base64textString;
     this.bookService.updateBook(book.id, book.title, book.ISBN, 
-    book.quantity, book.genre, book.author, book.pages, this.base64textString);
+    book.quantity, book.genre, book.author, book.pages, book.cover);
   }
 
   handleFileSelect(evt, book){
@@ -60,6 +76,11 @@ export class EditorLibrosComponent implements OnInit {
   _handleReaderLoaded(readerEvt) {
      let binaryString = readerEvt.target.result;
      this.base64textString= btoa(binaryString);
+  }
+
+  logout(){
+    localStorage.removeItem("user");
+    this.router.navigate(["/auth"]);
   }
 
 }

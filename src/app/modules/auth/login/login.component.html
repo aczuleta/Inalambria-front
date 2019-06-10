@@ -1,10 +1,10 @@
-<form  class="col-xs-12 row margin-30">
-    <mat-form-field class="col-xs-12" >
-      <input ngModel  required name="username" #username="ngModel"  matInput placeholder="Nombre de usuario">
+<form class="col-xs-12 row margin-30">
+    <mat-form-field class="col-xs-12">
+        <input ngModel required name="username" #username="ngModel" matInput placeholder="Nombre de usuario">
     </mat-form-field>
     <div class="col-xs-12 center-xs">
         <button mat-raised-button color="primary" (click)="login(username.value)">
-          Iniciar Sesión
+            Iniciar Sesión
         </button>
     </div>
 </form>
