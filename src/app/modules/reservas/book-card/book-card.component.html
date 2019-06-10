@@ -27,8 +27,7 @@
                         <h4 mat-line>Género: {{book.genre}}</h4>
                     </mat-list-item>
                     <div class="col-xs-12 center-xs">
-                        <button [disabled]="book.quantity === 0" mat-raised-button color="primary" 
-                        (click)="reservar(book.id, user.id)">Reservar</button>
+                        <button [disabled]="book.quantity === 0" mat-raised-button color="primary" (click)="reservar(book.id, user.id)">Reservar</button>
                     </div>
                 </mat-list>
             </div>

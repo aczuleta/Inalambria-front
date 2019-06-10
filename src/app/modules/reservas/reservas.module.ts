@@ -19,5 +19,5 @@ import { CanReservar } from '../../guards/reserva.guard';
     ],
     providers: [CanReservar]
   })
-export default class AdminModule {
+export default class ReservasModule {
 }

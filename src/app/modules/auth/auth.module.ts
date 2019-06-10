@@ -19,5 +19,5 @@ import { SignupComponent } from './signup/signup.component';
     ],
     providers: []
   })
-export default class AdminModule {
+export default class AuthModule {
 }

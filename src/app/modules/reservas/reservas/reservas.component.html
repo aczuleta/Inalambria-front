@@ -1,12 +1,11 @@
 <mat-toolbar>
-  <div class="col-xs-6 start-xs">
-    Bienvenido {{usuario.fullname}}
-  </div>
-  <div class="col-xs-6 end-xs">
-      <button mat-button color="warn" (click)="logout()">Cerrar Sesión</button>
-  </div>
+    <div class="col-xs-6 start-xs">
+        Bienvenido {{usuario.fullname}}
+    </div>
+    <div class="col-xs-6 end-xs">
+        <button mat-button color="warn" (click)="logout()">Cerrar Sesión</button>
+    </div>
 </mat-toolbar>
-
 <div class="row full-width">
     <mat-accordion class="full-width">
         <div [@fade]>

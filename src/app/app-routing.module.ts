@@ -10,15 +10,15 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.default)
+    loadChildren: './modules/admin/admin.module'
   },
   {
     path: 'reservas',
-    loadChildren: () => import('./modules/reservas/reservas.module').then(m => m.default)
+    loadChildren: './modules/reservas/reservas.module'
   },
   {
     path: 'auth',
-    loadChildren: () => import('./modules/auth/auth.module').then(m => m.default)
+    loadChildren: './modules/auth/auth.module'
   }
 ];
 

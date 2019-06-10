@@ -1,3 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~flexboxgrid/css/flexboxgrid.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@mixin margin-container($size) {
+    margin: $size;
+}
+
+.full-width{
+    width: 100% !important;
+}
+
+.full-heigh{
+    height: 100% !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.custom-card{
+    background-color: white;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    @include margin-container(30px);
+}
