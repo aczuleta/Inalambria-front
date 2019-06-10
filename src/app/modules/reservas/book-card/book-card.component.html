@@ -1,0 +1,38 @@
+<mat-card class="custom-card">
+    <mat-card-header>
+      <mat-card-title>{{book.title}}</mat-card-title>
+      <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+          <div class="col-xs-12 col-md-4 center-xs star-md">
+              <img mat-card-image class="book-card__img"
+              [src]="book.cover" alt="Photo of a Shiba Inu">
+          </div>
+          <div class="col-xs-12 center xs col-md-8 start-md">
+              <mat-list>
+                <h3 mat-subheader>Detalles del libro</h3>
+                <mat-list-item>
+                  <h4 mat-line>Páginas: {{book.pages}}</h4>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <h4 mat-line>Disponibles: {{book.quantity}}</h4>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <h4 mat-line>Autor: {{book.author}}</h4>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <h4 mat-line>Género: {{book.genre}}</h4>
+                </mat-list-item>
+                <div class="col-xs-12 center-xs">
+                    <button mat-raised-button color="primary" 
+                    (click)="reservar(book.id, user.id)">Reservar</button>
+                </div>
+              </mat-list>
+          </div>
+      </div>
+    </mat-card-content>
+</mat-card>

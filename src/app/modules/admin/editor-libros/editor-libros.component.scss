@@ -1,0 +1,36 @@
+$component : ".editor";
+$margin: 20px;
+
+@mixin margin-container($size) {
+    margin: $size;
+}
+
+#{$component} {
+    
+    &__collapse{
+        height: 200px;
+    }
+
+    &__hinhehit{
+        height: inherit;
+    }
+
+    &__img-dimensions{
+        height: 150px;
+        width: 100px;    
+    }
+
+    &__card{
+        background-color: white;
+        box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+        @include margin-container(30px);
+    }
+
+    &__right--20{
+        margin-right: $margin;
+    }
+
+    &__bottom-20{
+       margin-bottom: $margin;
+    }
+}

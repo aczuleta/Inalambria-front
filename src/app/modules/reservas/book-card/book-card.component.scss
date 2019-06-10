@@ -1,0 +1,11 @@
+$component : ".book-card";
+
+#{$component} {
+
+    &__img{
+        height: 100%;
+        margin-left: 5px !important;
+        margin-top: 5px !important;
+    }
+
+}

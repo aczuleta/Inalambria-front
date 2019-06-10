@@ -1,0 +1,109 @@
+
+<!--Sección del creador de libros-->
+<mat-card class="editor__card">
+    <mat-card-header>
+      <mat-card-title>Agregar Libro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row full-width">
+         <form  class="col-xs-12">
+            <mat-form-field class="full-width col-xs-12 col-md-6" >
+              <input ngModel  required name="titulo" #titulo="ngModel"  matInput placeholder="Título">
+            </mat-form-field>
+            <mat-form-field class="full-width col-xs-12 col-md-6" >
+                <input ngModel required  name="ISBN" #ISBN="ngModel" matInput placeholder="ISBN">
+            </mat-form-field>
+            <mat-form-field class="full-width col-xs-12 col-md-6" >
+              <input ngModel required name="genero" #genero="ngModel" matInput placeholder="Género">
+            </mat-form-field>
+            <mat-form-field class="full-width col-xs-12 col-md-6" >
+                <input ngModel required name="autor" #autor="ngModel" matInput placeholder="Autor">
+            </mat-form-field>
+            <mat-form-field class="full-width col-xs-12 col-md-6" >
+                <input type="number" required ngModel name="paginas" #paginas="ngModel" matInput placeholder="Paginas">
+            </mat-form-field>
+            <mat-form-field class="full-width col-xs-12 col-md-6" >
+                <input type="number" required ngModel name="cantidad" #cantidad="ngModel" matInput placeholder="Cantidad">
+            </mat-form-field>
+            <div class="col-xs-12">
+                <label for="filePicker2">Elige la portada del libro</label>
+                <br>
+                <input type="file" id="filePicker2" (change)="handleFileSelect($event, null)">
+            </div>
+         </form>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="crearLibro(titulo, ISBN, genero, autor, paginas, cantidad)" mat-button>Agregar</button>
+    </mat-card-actions>
+</mat-card>
+
+
+<!--Sección de los libros-->
+<h1><b>Libros Existentes:</b></h1>
+<mat-accordion>
+  <div *ngIf="( books$ | async) as books">
+      <mat-expansion-panel *ngFor="let book of books">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{book.title}}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{book.ISBN}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <div class="row full-width">
+            <div class="col-xs-12 center-xs col-lg-6 start-lg row">
+                <div class="col-xs-4 start-xs">
+                    <img class="editor__img-dimensions"
+                    [src]="book.cover">
+                    <!--https://www.bookcoversclub.com/wp-content/uploads/2017/07/book-cover-338.jpg-->
+                </div>
+                <div class="col-xs-8 start-xs">
+                  <h4>Páginas: {{book.pages}}</h4>
+                  <h4>Género: {{book.genre}}</h4>
+                  <h4>Autor: {{book.author}}</h4>
+                  <h4>Disponibles: {{book.quantity}}</h4>
+                </div>
+            </div>
+            <div *ngIf="!book.seleccionado" class="col-xs-12 center-xs col-lg-6 start-lg">
+                <button mat-raised-button color="primary" (click)="toggleLibro(book)" class="editor__right--20">Editar</button>
+                <button mat-raised-button color="warn" (click)="eliminarLibro(book.id)">Eliminar</button>
+            </div>
+            <div *ngIf="book.seleccionado" class="col-xs-12 center-xs col-lg-6 start-lg">
+                <div  class="col-xs-12 editor__bottom-20">
+                    <mat-form-field class="full-width col-xs-12 col-md-6" >
+                      <input required [(ngModel)]="book.title"   matInput placeholder="Título">
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-xs-12 col-md-6" >
+                        <input required [(ngModel)]="book.ISBN" matInput placeholder="ISBN">
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-xs-12 col-md-6" >
+                      <input  required [(ngModel)]="book.genre" matInput placeholder="Género">
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-xs-12 col-md-6" >
+                        <input required [(ngModel)]="book.author" matInput placeholder="Autor">
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-xs-12 col-md-6" >
+                        <input type="number" required [(ngModel)]="book.pages" matInput placeholder="Paginas">
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-xs-12 col-md-6" >
+                        <input type="number" required [(ngModel)]="book.quantity" matInput placeholder="Cantidad">
+                    </mat-form-field>
+                    <div class="col-xs-12">
+                        <label for="filePicker">Elige la portada del libro</label>
+                        <br>
+                        <input type="file" id="filePicker" (change)="handleFileSelect($event, book)">
+                    </div>
+                    <br>
+                    <div class="col-xs-12 center-xs">
+                        <button mat-raised-button color="primary" (click)="actualizarLibro(book)" class="editor__right--20">Actualizar</button>
+                        <button mat-raised-button color="warn" (click)="toggleLibro(book)">Cancelar</button>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+  </div>
+</mat-accordion>
